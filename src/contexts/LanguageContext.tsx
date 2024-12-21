@@ -15,7 +15,11 @@ type LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export const LanguageProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [locale, setLocale] = useState<LocaleKey>("ja");
 
   const t = (key: string) => {
@@ -36,7 +40,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       {children}
     </LanguageContext.Provider>
   );
-}
+};
 
 export function useLanguage() {
   const context = useContext(LanguageContext);

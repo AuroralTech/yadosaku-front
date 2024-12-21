@@ -1,6 +1,6 @@
 import { Button } from "@/components/buttons/Button";
 
-export function PromotionCard() {
+export const PromotionCard = () => {
   return (
     <section className="bg-gradient-to-br from-warm to-secondary rounded-lg p-4">
       <div>
@@ -15,4 +15,4 @@ export function PromotionCard() {
       </div>
     </section>
   );
-}
+};

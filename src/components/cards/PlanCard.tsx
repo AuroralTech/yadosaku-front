@@ -9,13 +9,13 @@ type PlanCardProps = {
   image: string;
 };
 
-export function PlanCard({
+export const PlanCard = ({
   name,
   price,
   remaining,
   tags,
   image,
-}: PlanCardProps) {
+}: PlanCardProps) => {
   return (
     <Link
       href={`/plan/${encodeURIComponent(
@@ -49,4 +49,4 @@ export function PlanCard({
       </div>
     </Link>
   );
-}
+};

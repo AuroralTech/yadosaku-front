@@ -21,12 +21,12 @@ const iconMap = {
   none: "",
 };
 
-export function Section({
+export const Section = ({
   title,
   items,
   children,
   variant = "default",
-}: SectionProps) {
+}: SectionProps) => {
   const bgColor = {
     default: "bg-secondary/50",
     warning: "bg-warm",
@@ -85,4 +85,4 @@ export function Section({
       </div>
     </div>
   );
-}
+};

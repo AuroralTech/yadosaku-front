@@ -29,7 +29,16 @@ type Description = {
   icon?: "check" | "bullet" | "asterisk";
 };
 
-export type PlanDetail = {
+// セクションの種類を定義
+type SectionType =
+  | "description" // 説明文（プランコンセプト、プラン特典など）
+  | "facility" // 施設情報
+  | "meal" // 食事関連（夕食、朝食、食など）
+  | "schedule" // スケジュール
+  | "list" // 汎用リスト（アメニティや注意事項など）
+  | "image"; // 画像ギャラリー
+
+export type PlanDetailType = {
   id: string;
   name: string;
   price: {
@@ -73,23 +82,4 @@ export type PlanDetail = {
     mealType?: "dinner" | "breakfast" | "lunch";
     order: number;
   }[];
-};
-
-// セクションの種類を定義
-type SectionType =
-  | "description" // 説明文（プランコンセプト、プラン特典など）
-  | "facility" // 施設情報
-  | "meal" // 食事関連（夕食、朝食、食など）
-  | "schedule" // スケジュール
-  | "list" // 汎用リスト（アメニティや注意事項など）
-  | "image"; // 画像ギャラリー
-
-// セクション定義の型
-export type SectionDefinition = {
-  id: string;
-  title: string;
-  type: SectionType;
-  variant?: "default" | "warning" | "highlight";
-  descriptionId?: string;
-  mealType?: "dinner" | "breakfast" | "lunch";
 };

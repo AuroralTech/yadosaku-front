@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function Header() {
+export const Header = () => {
   return (
     <header className="bg-container border-b border-zinc-100">
       <div className="px-4 py-3">
@@ -20,4 +20,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

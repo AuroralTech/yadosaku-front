@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export function ImageGallery({ images }: { images: string[] }) {
+export const ImageGallery = ({ images }: { images: string[] }) => {
   const [mainImage, setMainImage] = useState(0);
 
   if (images.length === 0) return null;
@@ -38,4 +38,4 @@ export function ImageGallery({ images }: { images: string[] }) {
       </div>
     </div>
   );
-}
+};

@@ -2,10 +2,10 @@ import { Header } from "@/components/common/Header";
 import { Button } from "@/components/buttons/Button";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
-import type { PlanDetail } from "@/types/plan";
 import { PlanSection } from "@/components/planDetail/PlanSection";
+import type { PlanDetailType } from "@/types/plan";
 
-const PLAN_DETAIL: PlanDetail = {
+const PLAN_DETAIL: PlanDetailType = {
   id: "star-watching-2024",
   name: "Star Watching resort PICA 2024",
   price: {
@@ -247,7 +247,7 @@ const PLAN_DETAIL: PlanDetail = {
 };
 
 // メインコンポーネントの修正
-export default function PlanDetail() {
+export const PlanDetail = () => {
   const { t } = useLanguage();
 
   return (
@@ -332,4 +332,6 @@ export default function PlanDetail() {
       </main>
     </div>
   );
-}
+};
+
+export default PlanDetail;

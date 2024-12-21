@@ -2,13 +2,13 @@ import { Section } from "@/components/sections/Section";
 import { ImageGallery } from "./ImageGallery";
 import type { PlanDetail, SectionDefinition } from "@/types/plan";
 import Image from "next/image";
-export function PlanSection({
+export const PlanSection = ({
   section,
   data,
 }: {
   section: SectionDefinition;
   data: PlanDetail;
-}) {
+}) => {
   switch (section.type) {
     case "description":
       const descriptionData = data.descriptions.find(
@@ -155,4 +155,4 @@ export function PlanSection({
     default:
       return null;
   }
-}
+};
