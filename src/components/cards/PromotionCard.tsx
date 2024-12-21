@@ -1,3 +1,5 @@
+import { Button } from "@/components/buttons/Button";
+
 export function PromotionCard() {
   return (
     <section className="bg-gradient-to-br from-warm to-secondary rounded-lg p-4">
@@ -7,9 +9,9 @@ export function PromotionCard() {
         </span>
         <h3 className="text-lg font-bold mb-1">早期予約割引</h3>
         <p className="text-muted text-sm mb-4">30日前までの予約で最大25%オフ</p>
-        <button className="w-full bg-white hover:bg-accent hover:text-white border border-accent text-accent py-2 rounded-lg transition-colors">
+        <Button variant="outline" fullWidth>
           詳細を見る
-        </button>
+        </Button>
       </div>
     </section>
   );
