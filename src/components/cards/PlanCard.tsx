@@ -18,7 +18,7 @@ export function PlanCard({
 }: PlanCardProps) {
   return (
     <Link
-      href={`/plans/${encodeURIComponent(
+      href={`/plan/${encodeURIComponent(
         name.toLowerCase().replace(/ /g, "-")
       )}`}
     >
