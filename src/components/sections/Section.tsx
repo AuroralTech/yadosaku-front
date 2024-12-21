@@ -3,7 +3,7 @@ type ListItem = {
   subItems?: string[];
   description?: string;
   note?: string;
-  icon?: "check" | "bullet" | "asterisk";
+  icon?: "none" | "check" | "bullet" | "asterisk";
   highlight?: boolean;
 };
 
@@ -18,6 +18,7 @@ const iconMap = {
   check: "✓",
   bullet: "•",
   asterisk: "※",
+  none: "",
 };
 
 export function Section({
@@ -41,7 +42,7 @@ export function Section({
             {items.map((item, index) => (
               <li key={index}>
                 <div className="flex items-start">
-                  {item.icon && (
+                  {item.icon && item.icon !== "none" && (
                     <span className="text-accent mr-2">
                       {iconMap[item.icon]}
                     </span>
