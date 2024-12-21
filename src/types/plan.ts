@@ -1,4 +1,4 @@
-type LocalizedString = {
+export type LocalizedString = {
   ja: string;
   en: string;
   ko: string;
@@ -6,37 +6,38 @@ type LocalizedString = {
 };
 
 type MealSection = {
-  title: LocalizedString;
-  items: LocalizedString[];
+  title: string;
+  items: string[];
   type?: "menu" | "equipment" | "other";
   icon?: "bullet" | "check";
 };
 
 type Meal = {
   type: "dinner" | "breakfast" | "lunch";
-  name: LocalizedString;
-  description?: LocalizedString;
+  name: string;
+  description?: string;
   sections: MealSection[];
   allergens?: string[];
+  images?: string[];
 };
 
 type Description = {
   id: string;
-  title: LocalizedString;
-  content: LocalizedString[];
+  title: string;
+  content: string[];
   style?: "normal" | "bullet" | "numbered" | "heading";
-  icon?: "none" | "check" | "bullet" | "asterisk";
+  icon?: "check" | "bullet" | "asterisk";
 };
 
 export type PlanDetail = {
   id: string;
-  name: LocalizedString;
+  name: string;
   price: {
     amount: string;
     unit: "person" | "room";
   };
   remaining: number;
-  summary: LocalizedString;
+  summary: string;
   mainImage: string;
   images: string[];
   period: {
@@ -44,28 +45,28 @@ export type PlanDetail = {
     end: string;
   };
   facility: {
-    name: LocalizedString;
-    type: LocalizedString;
-    style: LocalizedString;
+    name: string;
+    type: string;
+    style: string;
     capacity: number;
     units: number;
   };
-  tags: LocalizedString[];
+  tags: string[];
   descriptions: Description[];
   meals: Meal[];
   schedule: {
     time: string;
-    description: LocalizedString;
+    description: string;
   }[];
   list: {
-    title: LocalizedString;
-    content: LocalizedString[];
+    title: string;
+    content: string[];
     style: "normal" | "bullet" | "numbered" | "heading";
     icon: "none" | "check" | "bullet" | "asterisk";
   }[];
   sections: {
     id: string;
-    title: LocalizedString;
+    title: string;
     type: SectionType;
     variant?: "default" | "warning" | "highlight";
     descriptionId?: string;
@@ -74,14 +75,16 @@ export type PlanDetail = {
   }[];
 };
 
+// セクションの種類を定義
 type SectionType =
-  | "description"
-  | "facility"
-  | "meal"
-  | "schedule"
-  | "list"
-  | "image";
+  | "description" // 説明文（プランコンセプト、プラン特典など）
+  | "facility" // 施設情報
+  | "meal" // 食事関連（夕食、朝食、食など）
+  | "schedule" // スケジュール
+  | "list" // 汎用リスト（アメニティや注意事項など）
+  | "image"; // 画像ギャラリー
 
+// セクション定義の型
 export type SectionDefinition = {
   id: string;
   title: string;
@@ -89,5 +92,4 @@ export type SectionDefinition = {
   variant?: "default" | "warning" | "highlight";
   descriptionId?: string;
   mealType?: "dinner" | "breakfast" | "lunch";
-  order: number;
 };
