@@ -38,7 +38,7 @@ const POPULAR_PLANS = [
   },
 ];
 
-export default function Home() {
+export const Home = () => {
   return (
     <div className="min-h-screen bg-container">
       <Header />
@@ -70,7 +70,7 @@ export default function Home() {
                 おすすめ
               </span>
               <h2 className="text-xl font-bold text-foreground">
-                人気のプラン
+                開催中のプラン
               </h2>
             </div>
           </div>
@@ -84,4 +84,6 @@ export default function Home() {
       </main>
     </div>
   );
-}
+};
+
+export default Home;
