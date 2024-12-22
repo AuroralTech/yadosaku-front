@@ -38,6 +38,16 @@ type SectionType =
   | "list" // 汎用リスト（アメニティや注意事項など）
   | "image"; // 画像ギャラリー
 
+export type SectionDefinitionType = {
+  id: string;
+  title: string;
+  type: SectionType;
+  variant?: "default" | "warning" | "highlight";
+  descriptionId?: string;
+  mealType?: "dinner" | "breakfast" | "lunch";
+  order: number;
+};
+
 export type PlanDetailType = {
   id: string;
   name: string;
