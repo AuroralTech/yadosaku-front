@@ -65,5 +65,9 @@ export default {
       phone: "090-1234-5678",
       notes: "ご要望等がございましたらご記入ください",
     },
+    remaining: {
+      label: "残り",
+      unit: "室",
+    },
   },
 } as const;

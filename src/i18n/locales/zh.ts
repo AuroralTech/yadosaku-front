@@ -65,5 +65,9 @@ export default {
       phone: "090-1234-5678",
       notes: "如有特殊要求请在此填写",
     },
+    remaining: {
+      label: "剩余",
+      unit: "间",
+    },
   },
 } as const;

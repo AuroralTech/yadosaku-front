@@ -2,7 +2,7 @@ import Image from "next/image";
 import { usePlanDetail } from "./usePlanDetail";
 
 export const PlanDetailImage = () => {
-  const { PLAN_DETAIL } = usePlanDetail();
+  const { PLAN_DETAIL, t } = usePlanDetail();
   return (
     <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 shadow-lg">
       <Image
@@ -30,8 +30,12 @@ export const PlanDetailImage = () => {
       </div>
       <div className="absolute top-4 right-4">
         <span className="inline-flex items-center bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-md text-sm">
-          <span className="text-accent mr-1">残り</span>
-          <span className="font-medium">{PLAN_DETAIL.remaining}室</span>
+          <span className="text-accent mr-1">
+            {t("reservation.remaining.label")}
+          </span>
+          <span className="font-medium">
+            {PLAN_DETAIL.remaining} {t("reservation.remaining.unit")}
+          </span>
         </span>
       </div>
     </div>

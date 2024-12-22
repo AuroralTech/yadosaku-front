@@ -65,5 +65,9 @@ export default {
       phone: "090-1234-5678",
       notes: "요청사항이 있으시면 입력해 주세요",
     },
+    remaining: {
+      label: "남은",
+      unit: "객실",
+    },
   },
 } as const;

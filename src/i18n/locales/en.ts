@@ -65,5 +65,9 @@ export default {
       phone: "090-1234-5678",
       notes: "Please enter any special requests",
     },
+    remaining: {
+      label: "Remaining",
+      unit: "rooms",
+    },
   },
 } as const;
