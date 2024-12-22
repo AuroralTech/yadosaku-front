@@ -1,6 +1,7 @@
 export default {
   common: {
     nav: {
+      home: "宿サク",
       facilities: "宿泊施設",
       reservations: "予約",
     },

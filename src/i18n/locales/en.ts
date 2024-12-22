@@ -1,6 +1,7 @@
 export default {
   common: {
     nav: {
+      home: "YadoSaku",
       facilities: "Facilities",
       reservations: "Reservations",
     },

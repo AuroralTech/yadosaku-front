@@ -1,6 +1,7 @@
 export default {
   common: {
     nav: {
+      home: "YadoSaku",
       facilities: "住宿设施",
       reservations: "预订",
     },

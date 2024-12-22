@@ -16,7 +16,7 @@ export const Header = () => {
       <div className="px-4 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">
-            宿サク
+            {t("common.nav.home")}
           </Link>
           <div className="flex items-center gap-4">
             <nav className="flex space-x-6 text-sm">
