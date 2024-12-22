@@ -4,6 +4,7 @@ import { PlanSection } from "./PlanSection";
 import { usePlanDetail } from "./usePlanDetail";
 import { PlanDetailImage } from "./PlanDetailImage";
 import { PriceCard } from "./PriceCard";
+import Link from "next/link";
 
 export const PlanDetail = () => {
   const { PLAN_DETAIL } = usePlanDetail();
@@ -28,9 +29,11 @@ export const PlanDetail = () => {
             ))}
           {/* 予約ボタン */}
           <div className="sticky bottom-4 bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-lg">
-            <Button variant="solid" fullWidth>
-              予約する
-            </Button>
+            <Link href={`/plan/${PLAN_DETAIL.id}/reserve`}>
+              <Button variant="solid" fullWidth>
+                予約する
+              </Button>
+            </Link>
           </div>
         </div>
       </main>
