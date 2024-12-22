@@ -1,6 +1,7 @@
 import { Button } from "@/components/Buttons/Button";
 import { PlanDetailType } from "@/types/plan";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type Props = {
   plan: PlanDetailType;
@@ -10,23 +11,29 @@ export function ReservationForm({ plan }: Props) {
   const [step, setStep] = useState(1);
   console.log(plan);
 
+  const { t } = useLanguage();
+
   return (
     <div className="space-y-6">
       {/* ステップ1: 日程・人数選択 */}
       {step === 1 && (
         <div className="space-y-4">
           <div className="bg-secondary/50 rounded-lg p-4 space-y-4">
-            <h3 className="font-medium">宿泊日程</h3>
+            <h3 className="font-medium">{t("reservation.steps.schedule")}</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm text-muted">チェックイン</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.checkIn")}
+                </label>
                 <input
                   type="date"
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-muted">チェックアウト</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.checkOut")}
+                </label>
                 <input
                   type="date"
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none"
@@ -34,7 +41,9 @@ export function ReservationForm({ plan }: Props) {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm text-muted">人数</label>
+              <label className="text-sm text-muted">
+                {t("reservation.labels.guests")}
+              </label>
               <select className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                 <option>大人2名</option>
                 <option>大人1名</option>
@@ -44,7 +53,7 @@ export function ReservationForm({ plan }: Props) {
             </div>
           </div>
           <Button fullWidth onClick={() => setStep(2)}>
-            次へ進む
+            {t("reservation.buttons.next")}
           </Button>
         </div>
       )}
@@ -53,36 +62,44 @@ export function ReservationForm({ plan }: Props) {
       {step === 2 && (
         <div className="space-y-4">
           <div className="bg-secondary/50 rounded-lg p-4 space-y-4">
-            <h3 className="font-medium">予約者情報</h3>
+            <h3 className="font-medium">{t("reservation.steps.guest")}</h3>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm text-muted">お名前</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.name")}
+                </label>
                 <input
                   type="text"
-                  placeholder="山田 太郎"
+                  placeholder={t("reservation.placeholders.name")}
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-muted">メールアドレス</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.email")}
+                </label>
                 <input
                   type="email"
-                  placeholder="example@example.com"
+                  placeholder={t("reservation.placeholders.email")}
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-muted">電話番号</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.phone")}
+                </label>
                 <input
                   type="tel"
-                  placeholder="090-1234-5678"
+                  placeholder={t("reservation.placeholders.phone")}
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-muted">特記事項</label>
+                <label className="text-sm text-muted">
+                  {t("reservation.labels.notes")}
+                </label>
                 <textarea
-                  placeholder="ご要望等がございましたらご記入ください"
+                  placeholder={t("reservation.placeholders.notes")}
                   className="w-full p-3 border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none h-24"
                 />
               </div>
@@ -90,10 +107,10 @@ export function ReservationForm({ plan }: Props) {
           </div>
           <div className="flex gap-4">
             <Button variant="outline" fullWidth onClick={() => setStep(1)}>
-              戻る
+              {t("reservation.buttons.back")}
             </Button>
             <Button fullWidth onClick={() => setStep(3)}>
-              次へ進む
+              {t("reservation.buttons.next")}
             </Button>
           </div>
         </div>
@@ -103,39 +120,51 @@ export function ReservationForm({ plan }: Props) {
       {step === 3 && (
         <div className="space-y-4">
           <div className="bg-secondary/50 rounded-lg p-4 space-y-4">
-            <h3 className="font-medium">予約内容の確認</h3>
+            <h3 className="font-medium">{t("reservation.steps.confirm")}</h3>
             <div className="space-y-4 divide-y">
               <div className="py-2">
-                <span className="text-sm text-muted block">チェックイン</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.checkIn")}
+                </span>
                 <span>2024年4月1日</span>
               </div>
               <div className="py-2">
-                <span className="text-sm text-muted block">チェックアウト</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.checkOut")}
+                </span>
                 <span>2024年4月2日</span>
               </div>
               <div className="py-2">
-                <span className="text-sm text-muted block">人数</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.guests")}
+                </span>
                 <span>大人2名</span>
               </div>
               <div className="py-2">
-                <span className="text-sm text-muted block">お名前</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.name")}
+                </span>
                 <span>山田 太郎</span>
               </div>
               <div className="py-2">
-                <span className="text-sm text-muted block">メールアドレス</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.email")}
+                </span>
                 <span>example@example.com</span>
               </div>
               <div className="py-2">
-                <span className="text-sm text-muted block">電話番号</span>
+                <span className="text-sm text-muted block">
+                  {t("reservation.labels.phone")}
+                </span>
                 <span>090-1234-5678</span>
               </div>
             </div>
           </div>
           <div className="flex gap-4">
             <Button variant="outline" fullWidth onClick={() => setStep(2)}>
-              戻る
+              {t("reservation.buttons.back")}
             </Button>
-            <Button fullWidth>予約を確定する</Button>
+            <Button fullWidth>{t("reservation.buttons.confirm")}</Button>
           </div>
         </div>
       )}

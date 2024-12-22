@@ -65,10 +65,9 @@ export type PlanDetailType = {
   };
   facility: {
     name: string;
-    type: string;
-    style: string;
-    capacity: number;
-    units: number;
+    type?: string;
+    capacity?: number;
+    units?: number;
   };
   tags: string[];
   descriptions: Description[];

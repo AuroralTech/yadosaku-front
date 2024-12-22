@@ -1,11 +1,42 @@
 import { PlanDetailType } from "@/types/plan";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type Props = {
   plan: PlanDetailType;
 };
 
+const texts = {
+  ja: {
+    per: {
+      person: "人",
+      room: "部屋",
+    },
+  },
+  en: {
+    per: {
+      person: "per person",
+      room: "per room",
+    },
+  },
+  ko: {
+    per: {
+      person: "인",
+      room: "객실",
+    },
+  },
+  zh: {
+    per: {
+      person: "每人",
+      room: "每间",
+    },
+  },
+};
+
 export function ReservationSummary({ plan }: Props) {
+  const { locale } = useLanguage();
+  const t = texts[locale];
+
   return (
     <div className="bg-warm rounded-lg p-4">
       <div className="flex gap-4">
@@ -26,7 +57,7 @@ export function ReservationSummary({ plan }: Props) {
             <p className="font-medium text-primary">
               {plan.price.amount}
               <span className="text-muted font-normal ml-1">
-                / {plan.price.unit === "person" ? "人" : "部屋"}
+                / {t.per[plan.price.unit]}
               </span>
             </p>
           </div>

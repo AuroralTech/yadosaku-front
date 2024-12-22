@@ -5,19 +5,35 @@ import { usePlanDetail } from "./usePlanDetail";
 import { PlanDetailImage } from "./PlanDetailImage";
 import { PriceCard } from "./PriceCard";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const texts = {
+  ja: {
+    reserve: "予約する",
+  },
+  en: {
+    reserve: "Reserve Now",
+  },
+  ko: {
+    reserve: "예약하기",
+  },
+  zh: {
+    reserve: "立即预订",
+  },
+};
 
 export const PlanDetail = () => {
   const { PLAN_DETAIL } = usePlanDetail();
+  const { locale } = useLanguage();
+  const t = texts[locale];
+
   return (
     <div className="min-h-screen bg-container">
       <Header />
       <main className="px-4 py-6 space-y-8">
-        {/* メインビジュアル */}
         <PlanDetailImage />
-        {/* プランの詳細 */}
         <PriceCard />
         <div className="space-y-6">
-          {/* セクションの表示（orderでソート） */}
           {PLAN_DETAIL.sections
             .sort((a, b) => a.order - b.order)
             .map((section) => (
@@ -27,11 +43,10 @@ export const PlanDetail = () => {
                 data={PLAN_DETAIL}
               />
             ))}
-          {/* 予約ボタン */}
           <div className="sticky bottom-4 bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-lg">
             <Link href={`/plan/${PLAN_DETAIL.id}/reserve`}>
               <Button variant="solid" fullWidth>
-                予約する
+                {t.reserve}
               </Button>
             </Link>
           </div>

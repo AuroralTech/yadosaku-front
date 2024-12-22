@@ -20,7 +20,6 @@ export const usePlanDetail = () => {
     facility: {
       name: "PICA秩父",
       type: "コテージ",
-      style: "星空キャンプスタイル",
       capacity: 6,
       units: 10,
     },
