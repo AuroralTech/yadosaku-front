@@ -1,7 +1,7 @@
-import { Header } from "@/components/common/Header";
-import { SearchForm } from "@/components/forms/SearchForm";
-import { PlanCard } from "@/components/cards/PlanCard";
-import { PromotionCard } from "@/components/cards/PromotionCard";
+import { Header } from "@/components/Common/Header";
+import { SearchForm } from "@/components/Top/SearchForm";
+import { PlanCard } from "@/components/Top/PlanCard";
+import { PromotionCard } from "@/components/Top/PromotionCard";
 
 const POPULAR_PLANS = [
   {

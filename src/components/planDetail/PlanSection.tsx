@@ -1,13 +1,13 @@
-import { Section } from "@/components/sections/Section";
-import { ImageGallery } from "./ImageGallery";
-import type { PlanDetail, SectionDefinition } from "@/types/plan";
+import { Section } from "@/components/PlanDetail/Section";
+import { ImageGallery } from "@/components/PlanDetail/ImageGallery";
+import type { PlanDetailType, SectionDefinitionType } from "@/types/plan";
 import Image from "next/image";
 export const PlanSection = ({
   section,
   data,
 }: {
-  section: SectionDefinition;
-  data: PlanDetail;
+  section: SectionDefinitionType;
+  data: PlanDetailType;
 }) => {
   switch (section.type) {
     case "description":
