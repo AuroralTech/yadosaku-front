@@ -1,9 +1,5 @@
-export type LocalizedString = {
-  ja: string;
-  en: string;
-  ko: string;
-  zh: string;
-};
+export type LocaleCode = "ja" | "en" | "ko" | "zh";
+export type PriceUnit = "person" | "room";
 
 type MealSection = {
   title: string;
@@ -30,7 +26,7 @@ type Description = {
 };
 
 // セクションの種類を定義
-type SectionType =
+export type SectionType =
   | "description" // 説明文（プランコンセプト、プラン特典など）
   | "facility" // 施設情報
   | "meal" // 食事関連（夕食、朝食、食など）
@@ -53,7 +49,7 @@ export type PlanDetailType = {
   name: string;
   price: {
     amount: string;
-    unit: "person" | "room";
+    unit: PriceUnit;
   };
   remaining: number;
   summary: string;
@@ -66,30 +62,56 @@ export type PlanDetailType = {
   facility: {
     name: string;
     type: string;
-    style: string;
-    capacity: number;
-    units: number;
+    capacity?: number;
+    units?: number;
   };
   tags: string[];
   descriptions: Description[];
   meals: Meal[];
-  schedule: {
+  schedule: Array<{
     time: string;
     description: string;
-  }[];
-  list: {
+  }>;
+  list: Array<{
     title: string;
     content: string[];
     style: "normal" | "bullet" | "numbered" | "heading";
     icon: "none" | "check" | "bullet" | "asterisk";
-  }[];
-  sections: {
-    id: string;
-    title: string;
-    type: SectionType;
-    variant?: "default" | "warning" | "highlight";
-    descriptionId?: string;
-    mealType?: "dinner" | "breakfast" | "lunch";
-    order: number;
-  }[];
+  }>;
+  sections: SectionDefinitionType[];
+};
+
+export type CommonPlanDetail = {
+  id: string;
+  price: {
+    amount: string;
+    unit: PriceUnit;
+  };
+  remaining: number;
+  period: {
+    start: string;
+    end: string;
+  };
+  mainImage: string;
+  images: string[];
+};
+
+export type LocalizedPlanDetail = {
+  common: CommonPlanDetail;
+  ja: Omit<
+    PlanDetailType,
+    "id" | "price" | "remaining" | "period" | "mainImage" | "images"
+  >;
+  en?: Omit<
+    PlanDetailType,
+    "id" | "price" | "remaining" | "period" | "mainImage" | "images"
+  >;
+  ko?: Omit<
+    PlanDetailType,
+    "id" | "price" | "remaining" | "period" | "mainImage" | "images"
+  >;
+  zh?: Omit<
+    PlanDetailType,
+    "id" | "price" | "remaining" | "period" | "mainImage" | "images"
+  >;
 };

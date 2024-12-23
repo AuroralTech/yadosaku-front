@@ -1,7 +1,9 @@
 import { Section } from "@/components/PlanDetail/Section";
 import { ImageGallery } from "@/components/PlanDetail/ImageGallery";
 import type { PlanDetailType, SectionDefinitionType } from "@/types/plan";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Image from "next/image";
+
 export const PlanSection = ({
   section,
   data,
@@ -9,6 +11,8 @@ export const PlanSection = ({
   section: SectionDefinitionType;
   data: PlanDetailType;
 }) => {
+  const { t } = useLanguage();
+
   switch (section.type) {
     case "description":
       const descriptionData = data.descriptions.find(
@@ -37,7 +41,9 @@ export const PlanSection = ({
           <div className="grid grid-cols-2 gap-4">
             {Object.entries(data.facility).map(([key, value]) => (
               <div key={key}>
-                <span className="text-sm text-muted block">{key}</span>
+                <span className="text-sm text-muted block">
+                  {t(`plan.facility.${key}`)}
+                </span>
                 <span className="font-medium">{value}</span>
               </div>
             ))}
@@ -79,7 +85,9 @@ export const PlanSection = ({
                   <div key={index} className="relative aspect-[16/9]">
                     <Image
                       src={image}
-                      alt={`${mealData.name} - 画像${index + 1}`}
+                      alt={`${mealData.name} - ${t(
+                        "plan.section.imageAlt.meal"
+                      )}${index + 1}`}
                       fill
                       className="object-cover rounded-lg"
                     />
@@ -102,7 +110,7 @@ export const PlanSection = ({
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-orange-400">ⓘ</span>
                   <h4 className="font-medium text-orange-700">
-                    アレルギー品目
+                    {t("plan.section.allergens.title")}
                   </h4>
                 </div>
                 <p className="text-sm text-orange-600/90 pl-6">
