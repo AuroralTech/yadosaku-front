@@ -12,29 +12,21 @@ export const Header = () => {
   const { locale, setLocale, t } = useLanguage();
 
   return (
-    <header className="bg-container border-b border-zinc-100">
+    <header className="sticky top-0 z-40 bg-container border-b border-zinc-100">
       <div className="px-4 py-3">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">
             {t("common.nav.home")}
           </Link>
-          <div className="flex items-center gap-4">
-            <nav className="flex space-x-6 text-sm">
-              <Link
-                href="#"
-                className="text-muted hover:text-primary px-3 py-2"
-              >
-                {t("common.nav.facilities")}
-              </Link>
-              <Link
-                href="#"
-                className="text-muted hover:text-primary px-3 py-2"
-              >
-                {t("common.nav.reservations")}
-              </Link>
-            </nav>
+          <div className="flex items-center gap-2">
+            <Link href="#" className="text-muted hover:text-primary">
+              {t("common.nav.facilities")}
+            </Link>
+            <Link href="#" className="text-muted hover:text-primary">
+              {t("common.nav.reservations")}
+            </Link>
             <div className="relative group">
-              <button className="flex items-center gap-2 px-3 py-2 text-sm text-muted hover:text-primary">
+              <button className="flex items-center gap-2 text-sm text-muted hover:text-primary">
                 <span>🌐</span>
                 <span>
                   {languages.find((lang) => lang.code === locale)?.label}
